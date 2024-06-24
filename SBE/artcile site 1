@@ -1,0 +1,127 @@
+#importer les packages
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+
+def get_all_pages():
+    urls = []
+    page_number = 1
+
+    for i in range (7):
+        i = f"https://www.goafricaonline.com/sn/annuaire/societes-evenementiel?p={page_number}"
+        page_number += 1
+        urls.append(i)
+    return urls
+
+
+def parse_company(url) :
+        #import code
+    response=requests.get(url)
+    response.encoding=response.apparent_encoding
+
+    if response.status_code == 200:
+        html = response.text
+
+        f=open("scraping_link_2.html","w", encoding="utf-8")
+        f.write(html)
+        f.close()
+
+        soup=BeautifulSoup(response.text,"html5lib")
+
+    else:
+        print("ERREUR:", response.status_code)
+
+    # Getting all the article's tags
+    articles_tag = soup.findAll("article")
+
+    information_companies={}
+    names_list=[]
+    address_list=[]
+    telephone_list=[]
+    description_list=[]
+    secteur_list=[]
+
+
+
+    # Getting company's names with à for loop
+    for a in articles_tag:
+        name = a.find("a",class_="stretched-link font-bold text-16 t:text-20 text-black hover:text-black no-underline hover:no-underline").text
+        names_list.append(name)
+
+        try : 
+            adress = a.find("address",class_="text-14 text-gray-700 flex-1").text.strip()
+        except AttributeError as e:
+            adress = "Vide"
+        address_list.append(adress)
+
+        
+        try :
+            secteur = a.find("a",class_="z-10 text-13 t:text-14 text-gray-700 underline hover:no-underline")
+            #getting the information in the tag <a>
+            tel = secteur.get("href")
+            #Phone number without the "tel:"
+            new_tel = tel.replace("tel:", "")
+
+        except AttributeError as e: 
+            new_tel = "Vide"
+
+        telephone_list.append(new_tel)
+
+
+        try :
+            description = a.find("div",class_="block t:hidden text-gray-700 text-13").text
+        except AttributeError as e:
+            description = "Vide"
+        if description == None:
+            description = "Vide"
+
+        description_list.append(description)
+
+
+        try :
+            secteur = a.find("div",class_="text-14 text-brand-blue mb-4").text.strip()
+        except AttributeError as e:
+            secteur= "Vide"
+
+        secteur_list.append(secteur)
+
+    ###################  STORE INFORMATION INTO DATABASE  ###################
+
+    # Calling DataFrame constructor on list
+    df = pd.DataFrame.from_dict(information_companies, orient='index')
+    df = df.transpose()
+    # df = pd.DataFrame(dictionnary)
+    # print(df)
+
+    # importing sql library
+    from sqlalchemy import create_engine
+
+    # create a reference for sql library
+    # engine = create_engine("url_object",echo=False)
+    engine = create_engine("mysql+pymysql://root:motdepasse@localhost/sbe")
+
+
+
+    # attach the data frame to the sql
+    df.to_sql(name='structure', con=engine, if_exists='append', index=False)
+
+    # # show the complete datafrom Employee_Data table
+    # print(engine.execute("SELECT nom FROM structure ").fetchall())
+
+
+
+    ########################## STORE THE INFORMATION INTO MY DATABASE ##########################
+
+    # #Creating a dictionnary
+    # all_information = {"Noms entreprises" : list_companys_names, "Secteur d'activité" : activity_area_list, "Adresse":address_list, "Telephone":tel_list}
+    
+
+
+def parse_all_company() :
+
+    pages = get_all_pages()
+    for page in pages:
+        parse_company(url=page)
+        print(f"On scrappe {page}")
+
+parse_all_company()
