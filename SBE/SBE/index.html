@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Formulaire SBE</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="author" content="colorlib.com">
+
+		<!-- MATERIAL DESIGN ICONIC FONT -->
+		<link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.css">
+
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="css/style.css">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+		<!-- JS -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="image-holder">
+				<img src="images/form-wizard.png" alt="">
+			</div>
+            <form method="post" action="formulaire.php">
+            	<div id="wizard">
+            		<!-- SECTION 1 -->
+	                <h4></h4>
+	                <section>
+	                    <div class="form-row form-group">
+	                    	<div class="form-holder">
+	                    		<label for="nom">Nom de la structure * </label>
+	                    		<input type="text" class="form-control" id="nom" name="nom"  required>
+	                    	</div>
+	                    	<div class="form-holder">
+	                    		<label for="secteur">
+	                    		Secteur d'activité
+		                    	</label>
+	                    		<input type="text" class="form-control" id="secteur" name="secteur" >
+	                    	</div>
+	                    </div>	
+	                    <div class="form-row">
+	                    	<label for="type">
+	                    		Type de l'entreprise
+	                    	</label>
+	                    	<input type="text" class="form-control" id="type" name="type" >
+	                    </div>	
+	                    <div class="form-row">
+							<label>Zone d'implentation</label>
+
+							<!-- <select name="options[]" multiple>
+								<option value="1">Dakar</option>
+								<option value="2">Diourbel</option>
+								<option value="3">Fatick</option>
+								<option value="4">Kaffrine</option>
+								<option value="5">Kaolack</option>
+								<option value="6">Kédougou</option>
+								<option value="3">Kolda</option>
+								<option value="3">Louga</option>
+								<option value="3">Matam</option>
+								<option value="3">Saint-Louis</option>
+								<option value="3">Sédhiou</option>
+								<option value="3">Tambacounda</option>
+								<option value="3">Thiès</option>
+								<option value="3">Ziguinchor</option>
+
+								<Les autres options générées dynamiquement ici -->
+							<!-- </select> -->
+							
+							<table>
+								<td>
+									<input type="checkbox">
+									<label>Dakar</label>
+									<input type="checkbox">
+									<label>Diourbel</label>
+									<input type="checkbox">
+									<label>Fatick</label>
+
+								</td>
+								<td>
+									<input type="checkbox">
+									<label>Kaffrine</label>
+									<input type="checkbox">
+									<label>Kaolack</label>
+									<input type="checkbox">
+									<label>Kédougou</label>
+								</td>
+								<td>
+									<input type="checkbox">
+									<label>Kolda</label>
+									<input type="checkbox">
+									<label>Louga</label>
+									<input type="checkbox">
+									<label>Matam</label>
+								</td>
+								<td>
+									<input type="checkbox">
+									<label>Saint-Louis</label>
+									<input type="checkbox">
+									<label>Sédhiou</label>
+									<input type="checkbox">
+									<label>Tambacounda</label>
+								</td>
+								<td>
+									<input type="checkbox">
+									<label>Thiès</label>
+									<input type="checkbox">
+									<label>Ziguinchor </label>		
+								</td>
+							</table>
+							<br>
+							<br>
+							<br> 
+										</div>	
+	                    <div class="form-row">
+	                    	<label for="adresse">
+	                    		Adresse
+	                    	</label>
+	                    	<input type="text" class="form-control" id="adresse" name="adresse" style="margin-bottom: 20px" >
+	                    </div>	
+						<button type="submit" class="btn mt-4" name="connexion">Connexion</button>	                </section>
+	                
+					SECTION 2
+	                <h4></h4>
+	                <section>
+	                	<div class="form-row">
+	                    	<label for="">
+	                    		County 
+	                    	</label>
+	                    	<input type="text" class="form-control">
+	                    </div>
+						<div class="form-row">
+	                    	<label for="">
+	                    		Postcode / Zip 
+	                    	</label>
+	                    	<input type="text" class="form-control">
+	                    </div>
+	                    <div class="form-row form-group">
+	                    	<div class="form-holder">
+	                    		<label for="">
+	                    		Phone 
+		                    	</label>
+	                    		<input type="text" class="form-control">
+	                    	</div>
+	                    	<div class="form-holder">
+	                    		<label for="">
+	                    		Email Address 
+		                    	</label>
+	                    		<input type="text" class="form-control">
+	                    	</div>
+	                    </div>	
+	                    <div class="form-row" style="margin-bottom: 18px">
+	                    	<label for="">
+	                    		Order Notes
+	                    	</label>
+	                    	<textarea name="" id="" class="form-control" placeholder="Note about your order, eg. special notes fordelivery." style="height: 149px"></textarea>
+	                    </div>
+						<div class="checkbox">
+							<label>
+								<input type="checkbox"> Create an account?
+								<span class="checkmark"></span>
+							</label>
+						</div>
+	                </section>
+
+	                <!-- SECTION 3 -->
+	                <h4></h4>
+	                <section>
+	                    <div class="product">
+	                    	<div class="item">
+	                    		<div class="left">
+	                    			<a href="#" class="thumb">
+		                    			<img src="images/item-1.png" alt="">
+		                    		</a>
+		                    		<div class="purchase">
+		                    			<h6>
+		                    				<a href="#">Low Table/Stool</a>
+		                    			</h6>
+		                    			<span>x4</span>
+		                    		</div>
+	                    		</div>
+	                    		<span class="price">$29</span>
+	                    	</div>
+	                    	<div class="item">
+	                    		<div class="left">
+	                    			<a href="#" class="thumb">
+		                    			<img src="images/item-2.png" alt="">
+		                    		</a>
+		                    		<div class="purchase">
+		                    			<h6>
+		                    				<a href="#">Set of 3 Porcelain</a>
+		                    			</h6>
+		                    			<span>x2</span>
+		                    		</div>
+	                    		</div>
+	                    		<span class="price">$124</span>
+	                    	</div>
+	                    </div>
+	                    <div class="checkout">
+                    		<div class="subtotal">
+                    			<span class="heading">Subtotal</span>
+                    			<span>$364</span>
+                    		</div>
+	                    	<p class="shipping">
+	                    		<span class="heading">Shipping</span>
+	                    	there are no shipping methods available. please double check your address, or contact us if you need any help.
+	                    	</p>
+	                    	<div class="total">
+                    			<span class="heading">Subtotal</span>
+                    			<span class="total-price">$364</span>
+                    		</div>
+	                    </div>
+	                </section>
+
+	                <!-- SECTION 4 -->
+	                <h4></h4>
+	                <section>
+	                    <div class="checkbox-circle">
+							<label class="active">
+								<input type="radio" name="billing method" value="Direct bank transfer" checked>Direct bank transfer>
+								<span class="checkmark"></span>
+								<div class="tooltip">
+									Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.
+								</div>
+							</label>
+							<label>
+								<input type="radio" name="billing method" value="Check payments">Check payments
+								<span class="checkmark"></span>
+								<div class="tooltip">
+									Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.
+								</div>
+							</label>
+							<label>
+								<input type="radio" name="billing method" value="Cash on delivery">Cash on delivery
+								<span class="checkmark"></span>
+								<div class="tooltip">
+									Pay with cash upon delivery.
+								</div>
+							</label>
+						</div>
+	                </section>
+            	</div>
+            </form>
+		</div>
+
+		<script src="js/jquery-3.3.1.min.js"></script>
+		
+		<!-- JQUERY STEP -->
+		<script src="js/jquery.steps.js"></script>
+
+		<script src="js/main.js"></script>
+<!-- Template created and distributed by Colorlib -->
+</body>
+</html>
